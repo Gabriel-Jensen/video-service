@@ -38,7 +38,7 @@ services:
       build:
         context: ./Backend/API_services/Video-service
         dockerfile: 2.dockerfile
-      image: item-api-b.1.c:1
+      image: video-api-b.1.c:1
       ports:
         - "9501:80"
       networks:
