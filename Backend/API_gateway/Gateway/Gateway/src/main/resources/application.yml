@@ -4,7 +4,7 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://eureka.c:8761/eureka
 
 spring:
   application:
@@ -13,12 +13,12 @@ spring:
     gateway:
       routes:
         - id: user-api
-          uri: http://localhost:5250
+          uri: lb://USER-API
           predicates:
             - Path=/user/**
           #you can now hit this api gateway via: http://localhost:8888/user/abc
 
         - id: video-api
-          uri: http://localhost:5287
+          uri: lb://VIDEO-API
           predicates:
             - Path=/video/**

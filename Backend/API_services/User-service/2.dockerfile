@@ -14,4 +14,4 @@ WORKDIR /app
 
 COPY --from=build-env /app_build/build_out ./
 
-ENTRYPOINT ["dotnet", "dotnet-user-api.dll"]
+ENTRYPOINT ["dotnet", "User-service.dll"]
