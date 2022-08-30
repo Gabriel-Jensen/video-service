@@ -1,0 +1,71 @@
+version: '3.8'
+
+networks:
+  serviceProj.1:
+    external: false
+
+services:
+  sqlserver.c:
+    container_name: sqlserver.c
+    build:
+      context: ./
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+      - "1434:1433"
+    networks:
+      - serviceProj.1
+    environment:
+      SA_PASSWORD: "abc123!!@"
+      ACCEPT_EULA: "Y"
+
+  apigateway.c:
+    build:
+      context: ./Backend/API_gateway/Gateway/Gateway
+      dockerfile: 2.dockerfile
+    image: apigateway.c:1
+    ports:
+      - "8888"
+    networks:
+      - serviceProj.1
+    depends_on:
+      - eureka.c
+    deploy:
+      replicas: 1
+
+  apis:
+    video-api.1.c:
+      container_name: video-api
+      build:
+        context: ./Backend/API_services/Video-service
+        dockerfile: 2.dockerfile
+      image: item-api-b.1.c:1
+      ports:
+        - "9501:80"
+      networks:
+        - serviceProj.1
+      depends_on:
+        - sqlserver.c
+        #- eureka.c
+        #- redis.c
+        #- mongo.c
+      deploy:
+        replicas: 1
+    user-api.1.c:
+      container_name: user-api
+      build:
+        context: ./Backend/API_services/User-service
+        dockerfile: 2.dockerfile
+      image: user-api-b.1.c:1
+      ports:
+        - "9501:80"
+      networks:
+        - serviceProj.1
+      depends_on:
+        - sqlserver.c
+        #- eureka.c
+        #- redis.c
+        #- mongo.c
+      deploy:
+        replicas: 1
+
+
