@@ -38,7 +38,7 @@ namespace Controllers
         }
 
         [HttpGet]
-        [Route("search")]
+        [Route("search/{username}")]
         public async Task<ActionResult<List<User>>> GetAllUsers(string username)
         {
             return await _db.Users.Where(x => x.Username == username).ToListAsync();
@@ -70,6 +70,7 @@ namespace Controllers
             return Results.NoContent();
         }
 
+        [Route("{id}")]
         [HttpDelete]
         public async Task<IResult> DeleteUser(long id)
         {

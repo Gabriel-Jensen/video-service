@@ -38,7 +38,7 @@ namespace Controllers
         }
 
         [HttpGet]
-        [Route("search")]
+        [Route("search/{title}")]
         public async Task<ActionResult<List<Video>>> GetAllVideos(string title)
         {
             return await _db.Videos.Where(x => x.Title == title).ToListAsync();
@@ -71,6 +71,7 @@ namespace Controllers
             return Results.NoContent();
         }
 
+        [Route("{id}")]
         [HttpDelete]
         public async Task<IResult> DeleteVideo(long id)
         {
