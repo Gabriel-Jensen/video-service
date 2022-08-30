@@ -5,10 +5,19 @@ networks:
     external: false
 
 services:
+  eureka.c:
+     container_name: eureka.c
+     image: steeltoeoss/eureka-server
+     ports:
+       - "8761:8761"
+     networks:
+       - serviceProj.1
+
   sqlserver.c:
     container_name: sqlserver.c
-    build:
-      context: ./
+      #dockerfile: 3.dockerfile
+    #image: sqlserver.c:1
+    # the old way when I wasn't using a dockerfile
     image: mcr.microsoft.com/mssql/server:2019-latest
     ports:
       - "1434:1433"
@@ -24,7 +33,7 @@ services:
       dockerfile: 2.dockerfile
     image: apigateway.c:1
     ports:
-      - "8888"
+      - "8888:8888"
     networks:
       - serviceProj.1
     depends_on:
@@ -32,40 +41,37 @@ services:
     deploy:
       replicas: 1
 
-  apis:
-    video-api.1.c:
+  video-api.1.c:
       container_name: video-api
       build:
         context: ./Backend/API_services/Video-service
         dockerfile: 2.dockerfile
       image: video-api-b.1.c:1
       ports:
-        - "9501:80"
+        - "80"
       networks:
         - serviceProj.1
       depends_on:
         - sqlserver.c
-        #- eureka.c
+        - eureka.c
         #- redis.c
         #- mongo.c
       deploy:
         replicas: 1
-    user-api.1.c:
+  user-api.1.c:
       container_name: user-api
       build:
         context: ./Backend/API_services/User-service
         dockerfile: 2.dockerfile
       image: user-api-b.1.c:1
       ports:
-        - "9501:80"
+        - "80"
       networks:
         - serviceProj.1
       depends_on:
         - sqlserver.c
-        #- eureka.c
+        - eureka.c
         #- redis.c
         #- mongo.c
       deploy:
         replicas: 1
-
-
