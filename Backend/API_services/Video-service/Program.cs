@@ -7,7 +7,7 @@ using Steeltoe.Discovery.Eureka;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-builder.Services.AddDbContext<VideoDb>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("docker_db1")));
+builder.Services.AddDbContext<VideoDb>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("docker_db2")));
 
 builder.Services.AddDiscoveryClient(builder.Configuration);
 
