@@ -9,10 +9,10 @@ body {
 form {
     left: 50%; 
     background-color: #fff;
-    padding: 40px;
+    padding: 60px;
     display: inline-block;
     margin: auto;
-    height: 650px;
+    height: 450px;
     width: 500px;
     border-radius: 10px;
 }
@@ -23,7 +23,7 @@ h3 {
     margin: auto auto 10px auto;
 }
 
-input[ name='username'],input[name='password'],input[name='email'], input[name='age'] {
+input[ name='username'],input[name='password'], input[type='text'], input[type='file'] {
     outline: none;
     display: inline-block;
     padding: 10px 15px;

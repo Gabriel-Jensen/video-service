@@ -1,0 +1,27 @@
+doctype 
+html
+    head
+        title=title
+        link(href='/signupstyle.css' rel='stylesheet')
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet")
+    body
+        h3=title
+        block content
+            form(id='form' action="/upload" method="POST")
+                h3 Upload your video
+                
+                input(type='text' name='title' placeholder='Title')
+                br
+                
+                input(type='text' name='description' placeholder='Description')
+                br
+
+                input(type='file' id='myFile' name='myFile' accept='.mp4')
+                br
+
+                input(type='submit' value='Upload' name='submitBtn')
+                br
+                p #[a(href="/create") Cancel upload]
+            
