@@ -57,7 +57,7 @@ services:
         #- redis.c
         #- mongo.c
       deploy:
-        replicas: 1
+        replicas: 2
   user-api.1.c:
       container_name: user-api
       build:
@@ -74,4 +74,4 @@ services:
         #- redis.c
         #- mongo.c
       deploy:
-        replicas: 1
+        replicas: 2
