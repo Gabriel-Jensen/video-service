@@ -11,7 +11,7 @@ services:
      ports:
        - "8761:8761"
      networks:
-       - serviceProj.1
+      - serviceProj.1
 
   sqlserver.c:
     container_name: sqlserver.c

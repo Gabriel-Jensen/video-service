@@ -6,6 +6,7 @@ eureka:
     serviceUrl:
       defaultZone: http://eureka.c:8761/eureka
 
+
 spring:
   application:
     name: gateway-service-pro290
@@ -15,10 +16,10 @@ spring:
         - id: user-api
           uri: lb://USER-API
           predicates:
-            - Path=/user/**
-          #you can now hit this api gateway via: http://localhost:8888/user/abc
+            - Path=/users/**
+          #you can now hit this api gateway via: http://localhost:8888/users/abc
 
         - id: video-api
           uri: lb://VIDEO-API
           predicates:
-            - Path=/video/**
+            - Path=/videos/**
