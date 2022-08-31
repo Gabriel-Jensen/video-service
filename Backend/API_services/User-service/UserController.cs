@@ -54,6 +54,7 @@ namespace Controllers
 
             user2.Username = user1.Username;
             user2.Password = user1.Password;
+            user2.Age = user1.Age;
 
             await _db.SaveChangesAsync();
 
