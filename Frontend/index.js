@@ -4,6 +4,7 @@ const express = require('express'),
     routes = require('./routes/routes.js');
     expressSession = require('express-session');
 
+
 const app = express();
 
 app.set('view engine', 'pug');
@@ -39,7 +40,7 @@ const checkAuth = (req, res, next) => {
 // URLS
 app.get('/create', routes.create);
 app.post('/create', urlencodedParser, routes.createUser);
-app.get('/settings/:id',checkAuth, routes.settings);
+app.get('/settings/:username',checkAuth, routes.settings);
 app.get('/',routes.login)
 app.get('/login',routes.login);
 app.post('/login', urlencodedParser, routes.loginUser)
@@ -47,8 +48,9 @@ app.get('/logout', routes.logout);
 app.get('/edit/:id', routes.edit);
 app.post('/edit/:id', urlencodedParser, routes.editPerson);
 app.get('/delete/:id', routes.delete);
-app.get('/video/', routes.video);
+app.get('/video/:id', routes.video);
 app.get('/error/', routes.error);
 app.get('/upload/', routes.uploadVideo);
 app.post('/upload/', urlencodedParser, routes.upload)
+app.get('/browse/', routes.browse);
 app.listen(3000);

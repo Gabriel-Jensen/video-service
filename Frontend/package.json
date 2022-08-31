@@ -9,9 +9,13 @@
     "author": "gabriel-jensen_isaac-langi",
     "license": "ISC",
     "dependencies": {
+        "axios": "^0.27.2",
         "bcryptjs": "^2.4.3",
         "express": "^4.17.1",
         "express-session": "^1.17.2",
-        "pug": "^3.0.2"
+        "http": "0.0.1-security",
+        "node-fetch": "^2.6.7",
+        "pug": "^3.0.2",
+        "request": "^2.88.2"
     }
 }

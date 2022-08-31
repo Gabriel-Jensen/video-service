@@ -1,25 +1,14 @@
 extends layout 
 
 block content
-    table(class = 'gridtable')
-        tr
-            th Name
-            th Age
-            th
-            th
-            tr
-                td #{users.username}
-                td #{users.age}
-                td
-                td
-                td 
-                    a(href='/edit/' + users._id) Edit info
 
-        br
-        br
+        a(href='/edit/' + users.username)
+            button(type="button") Edit User
+        a(href='/delete/' + users.id)
+            button(type="button") Delete User
         a(href="/logout")
             button(type="button") Log Out
-        
-        a(href="/video")
-            button(type="button")
-    
+        a(href="/browse")
+            button(type="button") Browse Videos
+        a(href="/upload")
+            button(type="button") Upload a Video

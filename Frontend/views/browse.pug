@@ -1,0 +1,17 @@
+extends layout 
+
+block content
+    table(class = 'gridtable')
+    
+        tr
+            th Title
+            th
+        each video in database
+            tr 
+                td #{video.title}
+                td 
+                    a(href='/video/' + video.id) View
+        a(href="/upload")
+            button(type="button") Upload a Video
+        a(href="/logout")
+            button(type="button") Logout
