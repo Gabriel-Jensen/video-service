@@ -1,17 +1,24 @@
-extends layout
+doctype
+html    
+    head
+        title=title
+        link(href='/signupstyle.css' rel='stylesheet')
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet")
+    body
+        
+        block content 
+            form(id='form' method='put' action='/edit/' + users.username)
+                h3 Edit Profile
 
-block content 
-    form(id='form' method='post' action='/edit/' + users._id)
-        //- username
-        label(for='username') Username: 
-        input(type='text' name='username' value=users.username)
-        br
-        //- password
-        label(for='password') Password:
-        input(type='text' name='password' value="")
-        br
+                input(type='text' name='username' placeholder='Username')
+                br
 
-        input(type='submit' value='Update User')
-        br
-        br
-        a(href='/settings/' + users._id) Cancel
+                input(type='text' name='age' placeholder='Age')
+                br 
+
+                input(type='submit' value='Update User' name='submitBtn')
+                br
+
+                p #[a(href='/settings/' + users.username) Cancel]
