@@ -27,19 +27,19 @@ services:
       SA_PASSWORD: "abc123!!@"
       ACCEPT_EULA: "Y"
 
-  apigateway.c:
-    build:
-      context: ./Backend/API_gateway/Gateway/Gateway
-      dockerfile: 2.dockerfile
-    image: apigateway.c:1
-    ports:
-      - "8888:8888"
-    networks:
-      - serviceProj.1
-    depends_on:
-      - eureka.c
-    deploy:
-      replicas: 1
+  # apigateway.c:
+  #   build:
+  #     context: ./Backend/API_gateway/Gateway/Gateway
+  #     dockerfile: 2.dockerfile
+  #   image: apigateway.c:1
+  #   ports:
+  #     - "8888:8888"
+  #   networks:
+  #     - serviceProj.1
+  #   depends_on:
+  #     - eureka.c
+  #   deploy:
+  #     replicas: 1
 
   video-api.1.c:
       container_name: video-api
